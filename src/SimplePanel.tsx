@@ -5,7 +5,7 @@ import { SimpleOptions } from 'types';
 import { processData, emptyData } from './dataUtils';
 import { useScriptEvaluation } from './useScriptEvaluation';
 import { useChartConfig } from './useChartConfig';
-import { PlotlyChart } from './PlotlyChart';
+// import { PlotlyChart } from './PlotlyChart';
 import { ErrorDisplay } from './ErrorDisplay';
 import { useTheme2 } from '@grafana/ui';
 
@@ -149,18 +149,19 @@ export const SimplePanel: React.FC<Props> = ({
     return <ErrorDisplay message={message} title="Data Error" isNoData={true} />;
   }
 
-  return (
-    <PlotlyChart
-      ref={plotRef}
-      data={chartConfig.data}
-      layout={chartConfig.layout}
-      config={chartConfig.config}
-      frames={chartConfig.frames}
-      width={width}
-      height={height}
-      onEvent={handleEvent}
-      title={title}
-      replaceVariables={replaceVariables}
-    />
-  );
+  return <ErrorDisplay message={"hello"} title="Error" />;
+
+  // return (
+  //   <PlotlyChart
+  //     ref={plotRef}
+  //     data={chartConfig.data}
+  //     layout={chartConfig.layout}
+  //     config={chartConfig.config}
+  //     width={width}
+  //     height={height}
+  //     onEvent={handleEvent}
+  //     title={title}
+  //     replaceVariables={replaceVariables}
+  //   />
+  // );
 };

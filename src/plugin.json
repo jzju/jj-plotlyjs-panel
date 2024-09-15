@@ -1,13 +1,15 @@
 {
   "type": "panel",
   "name": "Plotly",
-  "id": "nline-plotlyjs-panel",
+  "id": "jj-plotlyjs-panel",
   "info": {
     "description": "Render charts with Plotly.js",
     "author": {
       "name": "nLine"
     },
-    "keywords": ["Plotly"],
+    "keywords": [
+      "Plotly"
+    ],
     "logos": {
       "small": "img/plotly-small.png",
       "large": "img/plotly-large.png"

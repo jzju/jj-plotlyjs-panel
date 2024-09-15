@@ -36,24 +36,9 @@ export const useChartConfig = (
 
     const mergedLayout = merge(themedLayout, options.layout ?? {});
     let layout = fmtValues(mergedLayout, replaceVariables);
-
-    let data = fmtValues(options.data ?? base.data, replaceVariables);
-    const allData = fmtValues(options.allData ?? null, replaceVariables);
-    let config = fmtValues(options.config ?? base.config, replaceVariables);
-    let frames = fmtValues(options.frames ?? base.frames, replaceVariables);
-
-    if (evaluatedScript) {
-      data = evaluatedScript.data ? merge(data, evaluatedScript.data, { arrayMerge: combineMerge }) : data;
-      layout = evaluatedScript.layout ? merge(layout, evaluatedScript.layout) : layout;
-      config = evaluatedScript.config ? merge(config, evaluatedScript.config) : config;
-      frames = evaluatedScript.frames ? merge(frames, evaluatedScript.frames, { arrayMerge: combineMerge }) : frames;
-    }
-
-    if (options.allData != null && data != null) {
-      if (Array.isArray(data)) {
-        data = data.map((item: any) => merge(allData, item, { arrayMerge: (_, sourceArray) => sourceArray }));
-      }
-    }
+    layout = evaluatedScript.layout ? merge(layout, evaluatedScript.layout) : layout;
+    let data = evaluatedScript.data;
+    let config = evaluatedScript.config;
 
     const updatedConfig = {
       ...config,
@@ -63,7 +48,7 @@ export const useChartConfig = (
       resScale: options.resScale,
     };
 
-    return { data, layout, config: updatedConfig, frames };
+    return { data, layout, config: updatedConfig };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options, evaluatedScript, replaceVariables, width, height, theme, data]);
 };

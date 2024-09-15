@@ -15,7 +15,6 @@ interface PlotlyChartProps {
   data: any[];
   layout: Partial<Plotly.Layout>;
   config: ExtendedConfig;
-  frames?: Plotly.Frame[];
   width: number;
   height: number;
   onEvent?: (event: { type: 'click' | 'select' | 'zoom'; data: any }) => void;
@@ -26,7 +25,7 @@ interface PlotlyChartProps {
 const Plot: React.ComponentType<any> = createPlotlyComponent(Plotly);
 
 export const PlotlyChart = forwardRef<any, PlotlyChartProps>(
-  ({ data, layout, config, frames, width, height, onEvent, title, replaceVariables }, ref) => {
+  ({ data, layout, config, width, height, onEvent, title, replaceVariables }, ref) => {
     const latestConfigRef = useRef(config);
 
     useEffect(() => {
@@ -78,7 +77,6 @@ export const PlotlyChart = forwardRef<any, PlotlyChartProps>(
         data={data}
         layout={{ ...layout, width, height }}
         config={updatedConfig}
-        frames={frames}
         useResizeHandler={true}
         style={{ width: `${width}px`, height: `${height}px` }}
         onClick={(clickData: any) =>
