@@ -1,10 +1,12 @@
 import { useState, useCallback } from 'react';
+import { jjfx } from 'utils';
 
 export const useScriptEvaluation = () => {
   const [error, setError] = useState<{ message: string; lineNumber: number | string; line: string } | null>(null);
 
   const evaluateScript = useCallback((script: string, context: any) => {
     try {
+      context.jjfx = jjfx
       const f = new Function(...Object.keys(context), script);
       const result = f(...Object.values(context));
 

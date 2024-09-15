@@ -66,36 +66,6 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel)
         },
       })
       .addCustomEditor({
-        id: 'allData',
-        path: 'allData',
-        name: 'Cross-trace Data',
-        description: 'Data props applied across all traces on the Plotly chart (object)',
-        editor: PanelOptionCode,
-        category: ['Data Editor'],
-        settings: {
-          editorHeight: 150,
-          language: 'yaml',
-          baseValue: base.allData,
-          initValue: inits.allData,
-        },
-        defaultValue: inits.allData,
-      })
-      .addCustomEditor({
-        id: 'data',
-        path: 'data',
-        name: 'Data',
-        description: 'Data object of the Plotly chart (array)',
-        editor: PanelOptionCode,
-        category: ['Data Editor'],
-        settings: {
-          editorHeight: 150,
-          language: 'yaml',
-          baseValue: base.data,
-          initValue: inits.data,
-        },
-        defaultValue: inits.data,
-      })
-      .addCustomEditor({
         id: 'layout',
         path: 'layout',
         name: 'Layout',
@@ -110,28 +80,13 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel)
         defaultValue: inits.layout,
       })
       .addCustomEditor({
-        id: 'config',
-        path: 'config',
-        name: 'Configuration',
-        description: 'Configuration object for the Plotly chart',
-        editor: PanelOptionCode,
-        category: ['Config Editor'],
-        settings: {
-          editorHeight: 150,
-          language: 'yaml',
-          baseValue: base.config,
-          initValue: inits.config,
-        },
-        defaultValue: inits.config,
-      })
-      .addCustomEditor({
         id: 'script',
         path: 'script',
         name: 'Processing Script',
         description: `
           Script executed whenever new data is available.
           Must return an object with one or more of the following properties:
-          data, layout, config, frames.`,
+          data, layout, config.`,
         editor: PanelOptionCode,
         category: ['Script Editor'],
         settings: {

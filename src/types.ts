@@ -10,7 +10,6 @@ export interface SimpleOptions {
   data: any[];
   layout: object;
   config: object;
-  frames: any[];
   script: string;
   onclick: string;
 }
@@ -20,7 +19,6 @@ export interface SimpleBase {
   data: any[];
   layout: object;
   config: object;
-  frames: any[];
 }
 
 export type EditorCodeType = string | undefined;
@@ -28,11 +26,8 @@ export type EditorCodeType = string | undefined;
 export type EditorLanguageType = 'javascript' | 'html' | 'yaml' | undefined;
 
 const defaultLayout = {
-  font: {
-    family: 'Inter, Helvetica, Arial, sans-serif',
-  },
   xaxis: {
-    type: 'date',
+    type: 'category',
     autorange: true,
     automargin: true,
   },
@@ -57,7 +52,6 @@ export const base: SimpleBase = {
   data: [],
   layout: defaultLayout,
   config: {},
-  frames: [],
 };
 
 // Defaults that Plotly begins with as an example
@@ -73,31 +67,16 @@ export const inits: SimpleOptions = {
   data: [],
   layout: defaultLayout,
   config: {},
-  frames: [],
   script: `\
-// Basic timeseries plot
-/*
-// 'data', 'variables', 'options', and 'utils' are passed as arguments
 
-let series = data.series[0];
-let x = series.fields[0];
-let y = series.fields[1];
-
+let fields = data.series[0].fields;
 return {
   data: [{
-    x: x.values || x.values.buffer,
-    y: y.values || y.values.buffer,
-    type: 'scatter',
-    mode: 'lines',
-    name: x.name
-  }],
-  layout: {
-    xaxis: { title: x.name },
-    yaxis: { title: y.name }
-  }
+    x: fields[0].values,
+    y: fields[1].values,
+    type: 'bar'
+  }]
 }
-*/
-return {}
   `,
   onclick: `\
 // Event handling
