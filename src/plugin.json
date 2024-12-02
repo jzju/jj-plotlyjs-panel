@@ -5,7 +5,7 @@
   "info": {
     "description": "Render charts with Plotly.js",
     "author": {
-      "name": "nLine"
+      "name": "jj"
     },
     "keywords": [
       "Plotly"
@@ -17,7 +17,7 @@
     "links": [
       {
         "name": "Website",
-        "url": "https://github.com/nline/nline-plotlyjs-panel"
+        "url": "https://github.com"
       }
     ],
     "screenshots": [

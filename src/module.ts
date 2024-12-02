@@ -24,7 +24,7 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel)
           ],
         },
         path: 'imgFormat',
-        defaultValue: 'png',
+        defaultValue: 'svg',
       })
       .addNumberInput({
         name: 'Exported image width',

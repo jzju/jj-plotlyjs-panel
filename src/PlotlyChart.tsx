@@ -44,7 +44,7 @@ export const PlotlyChart = forwardRef<any, PlotlyChartProps>(
         const currentConfig = latestConfigRef.current;
 
         const exportConfig = {
-          format: currentConfig.imgFormat || 'png',
+          format: currentConfig.imgFormat || 'svg',
           width: currentConfig.exportWidth || currentLayout.width,
           height: currentConfig.exportHeight || currentLayout.height,
           scale: currentConfig.resScale || 2,

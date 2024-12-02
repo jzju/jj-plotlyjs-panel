@@ -2,5 +2,5 @@
 globalThis.PlotlyConfig = { MathJaxConfig: 'local' };
 
 export function jjfx(x) {
-  return x + 1;
+  return x + 2;
 }
